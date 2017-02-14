@@ -12,9 +12,15 @@ def count_lines(xml_file)
       char_lines_count[char.text] += char.xpath("../LINE").length
     end
   end
-  char_lines_count.each do |char, num|
-    puts "#{num} #{char}"
-  end
+  char_lines_count
 end
 
-count_lines(xml)
+def report_lines(hash)
+  text = hash.map do |char, num|
+    "#{num} #{char}"
+  end
+  puts text
+  text
+end
+
+report_lines(count_lines(xml))
